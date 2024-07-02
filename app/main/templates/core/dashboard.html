@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - FlaskSiteBuilder{% endblock %}
+
+{% block content %}
+<section class="dashboard">
+    <div class="container">
+        <h1>Welcome to Your Dashboard, {{ current_user.username }}!</h1>
+        <p>Manage your account, view your progress, and access exclusive features here.</p>
+
+        <img src="{{ url_for('static', filename='images/feature1.jpg') }}" alt="Dashboard Feature" class="dashboard-image">
+
+        <div class="dashboard-sections">
+            <!-- Account Information Section -->
+            <div class="section">
+                <h2>Account Information</h2>
+                <ul>
+                    <li><strong>Username:</strong> {{ current_user.username }}</li>
+                    <li><strong>Email:</strong> {{ current_user.email }}</li>
+                    <li><strong>Member Since:</strong> {{ current_user.member_since.strftime('%B %d, %Y') }}</li>
+                </ul>
+            </div>
+
+            <!-- Quick Actions Section -->
+            <div class="section">
+                <h2>Quick Actions</h2>
+                <ul class="actions">
+                    <li><a href="{{ url_for('main.edit_profile') }}" class="btn">Edit Profile</a></li>
+                    <li><a href="{{ url_for('main.change_password') }}" class="btn">Change Password</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}" class="btn">Logout</a></li>
+                </ul>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="section">
+                <h2>Your Progress</h2>
+                <p>Coming soon... Check back to see your achievements and statistics.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
