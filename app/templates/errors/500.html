@@ -15,20 +15,19 @@
         <p class="error-suggestion">You can try the following options:</p>
 
         <ul class="error-links list-inline">
-            <li class="list-inline-item"><a href="{{ url_for('main.home') }}" class="btn btn-link">Home</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('main.about') }}" class="btn btn-link">About Us</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('main.contact') }}" class="btn btn-link">Contact Us</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('main.index') }}" class="btn btn-link">Home</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('about.index') }}" class="btn btn-link">About Us</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('contact.index') }}" class="btn btn-link">Contact Us</a></li>
             {% if current_user.is_authenticated %}
-                <li class="list-inline-item"><a href="{{ url_for('main.dashboard') }}" class="btn btn-link">Dashboard</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('dashboard.index') }}" class="btn btn-link">Dashboard</a></li>
             {% else %}
-                <li class="list-inline-item"><a href="{{ url_for('auth.login') }}" class="btn btn-link">Login</a></li>
-                <li class="list-inline-item"><a href="{{ url_for('auth.register') }}" class="btn btn-link">Register</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('login.index') }}" class="btn btn-link">Login</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('register.index') }}" class="btn btn-link">Register</a></li>
             {% endif %}
         </ul>
 
-        <p>If the problem persists, please <a href="{{ url_for('main.contact') }}">let us know</a>.</p>
-        <p class="return-home"><a href="{{ url_for('main.home') }}" class="btn btn-primary">Return to Home</a></p>
+        <p>If the problem persists, please <a href="{{ url_for('contact.index') }}">let us know</a>.</p>
+        <p class="return-home"><a href="{{ url_for('main.index') }}" class="btn btn-primary">Return to Home</a></p>
     </div>
 </section>
 {% endblock %}
-

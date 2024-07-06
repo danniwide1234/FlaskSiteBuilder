@@ -15,19 +15,19 @@
         <p class="error-suggestion">Here are some helpful links instead:</p>
 
         <ul class="error-links list-inline">
-            <li class="list-inline-item"><a href="{{ url_for('main.home') }}">Home</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('main.about') }}">About Us</a></li>
-            <li class="list-inline-item"><a href="{{ url_for('main.contact') }}">Contact Us</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('about.index') }}">About Us</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('contact.index') }}">Contact Us</a></li>
             {% if current_user.is_authenticated %}
-                <li class="list-inline-item"><a href="{{ url_for('main.dashboard') }}">Dashboard</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('contact.index') }}">Dashboard</a></li>
             {% else %}
-                <li class="list-inline-item"><a href="{{ url_for('auth.login') }}">Login</a></li>
-                <li class="list-inline-item"><a href="{{ url_for('auth.register') }}">Register</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('login.index') }}">Login</a></li>
+                <li class="list-inline-item"><a href="{{ url_for('register.index') }}">Register</a></li>
             {% endif %}
         </ul>
 
-        <p>If you think something is broken, please <a href="{{ url_for('main.contact') }}">let us know</a>.</p>
-        <p class="return-home"><a href="{{ url_for('main.home') }}" class="btn btn-primary">Return to Home</a></p>
+        <p>If you think something is broken, please <a href="{{ url_for('contact.index') }}">let us know</a>.</p>
+        <p class="return-home"><a href="{{ url_for('main.index') }}" class="btn btn-primary">Return to Home</a></p>
     </div>
 </section>
 {% endblock %}
