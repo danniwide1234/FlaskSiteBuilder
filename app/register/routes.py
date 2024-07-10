@@ -1,13 +1,21 @@
-from flask import Blueprint, render_template, redirect, flash, url_for
-from app.forms.forms import RegisterForm
+from flask import Blueprint, render_template, redirect, url_for, flash
+from app.forms.forms import RegistrationForm  # Import RegistrationForm
+from app.models.user import User  # Import User model if needed
+from app import db
 
-register_bp = Blueprint('register', __name__)
+bp = Blueprint('register', __name__, url_prefix='/register')
 
-@register_bp.route('/', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 def index():
-    form = RegisterForm()
+    form = RegistrationForm()
     if form.validate_on_submit():
-        # Handle register logic here (example: create a new user)
-        flash('Registration successful!', 'success')
-        return redirect(url_for('index.html'))  # Redirect to the main index on successful registration
+        new_user = User(username=form.username.data, email=form.email.data)
+        new_user.set_password(form.password.data)
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('Account created successfully! You can now log in.', 'success')
+        return redirect(url_for('login.index'))  # Assuming 'login.index' is correct
+
     return render_template('register/index.html', form=form)

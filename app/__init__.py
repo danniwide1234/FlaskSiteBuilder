@@ -1,53 +1,64 @@
-from flask import Flask, render_template
+from flask import Flask
 from config import Config
-from extensions import db, login_manager, migrate, init_app
+from extensions import db, login_manager, migrate, csrf
+from logging_config import configure_logging
+from datetime import datetime
 
-def create_app():
+def create_app(config_class=Config):
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_class)
 
     # Initialize extensions
-    init_app(app)
+    db.init_app(app)
+    login_manager.init_app(app)
+    migrate.init_app(app, db)
+    csrf.init_app(app)
 
-    # Register blueprints
-    from app.main.routes import main_bp
-    from app.about.routes import about_bp
-    from app.contact.routes import contact_bp
-    from app.dashboard.routes import dashboard_bp
-    from app.forms.routes import forms_bp
-    from app.login.routes import login_bp
-    from app.register.routes import register_bp
-    from app.reset_password.routes import reset_password_bp
-    from app.reset_request.routes import reset_request_bp
-    from app.validators.routes import validators_bp
-    from app.errors.routes import errors_bp
+    with app.app_context():
+        # Import models to ensure they are registered
+        from app.models.user import User  # Ensure User model is imported
+        # Create database tables for our data models
+        db.create_all()
 
-    app.register_blueprint(main_bp)
-    app.register_blueprint(about_bp, url_prefix='/about')
-    app.register_blueprint(contact_bp, url_prefix='/contact')
-    app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
-    app.register_blueprint(forms_bp, url_prefix='/forms')
-    app.register_blueprint(login_bp, url_prefix='/login')
-    app.register_blueprint(register_bp, url_prefix='/register')
-    app.register_blueprint(reset_password_bp, url_prefix='/reset_password')
-    app.register_blueprint(reset_request_bp, url_prefix='/reset_request')
-    app.register_blueprint(validators_bp, url_prefix='/validators')
-    app.register_blueprint(errors_bp)
-
-    # Register error handler, context processor, user loader
-    from app.models.user import User
-
-    @app.errorhandler(Exception)
-    def handle_exception(e):
-        return render_template('errors/500.html'), 500
-
-    @app.context_processor
-    def inject_user():
-        from flask_login import current_user
-        return dict(current_user=current_user)
-
+    # Set up user loader for Flask-Login
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
+
+    # Register blueprints
+    from app.main.routes import bp as main_bp
+    app.register_blueprint(main_bp)
+
+    from app.login.routes import bp as login_bp
+    app.register_blueprint(login_bp, url_prefix='/login')
+
+    from app.register.routes import bp as register_bp
+    app.register_blueprint(register_bp, url_prefix='/register')
+
+    from app.reset_password.routes import bp as reset_password_bp
+    app.register_blueprint(reset_password_bp, url_prefix='/reset_password')
+
+    from app.reset_request.routes import bp as reset_request_bp
+    app.register_blueprint(reset_request_bp, url_prefix='/reset_request')
+
+    from app.dashboard.routes import bp as dashboard_bp
+    app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
+
+    from app.about.routes import bp as about_bp
+    app.register_blueprint(about_bp, url_prefix='/about')
+
+    from app.contact.routes import bp as contact_bp
+    app.register_blueprint(contact_bp, url_prefix='/contact')
+
+    from app.errors.handlers import bp as errors_bp
+    app.register_blueprint(errors_bp)
+
+    # Additional setup
+    configure_logging(app)
+
+    # Inject current year into templates
+    @app.context_processor
+    def inject_current_year():
+        return {'current_year': datetime.utcnow().year}
 
     return app

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}FlaskSiteBuilder{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -26,16 +27,33 @@
     </header>
 
     <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
         {% block content %}{% endblock %}
     </main>
 
     <footer>
         <p>&copy; {{ current_year }} FlaskSiteBuilder. All rights reserved.</p>
         <div class="social-links">
-            <a href="#" target="_blank" rel="noopener">Facebook</a> |
-            <a href="#" target="_blank" rel="noopener">Twitter</a> |
-            <a href="#" target="_blank" rel="noopener">LinkedIn</a> |
-            <a href="#" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.facebook.com/daniel.egbuluese?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <i class="fab fa-facebook"></i> Facebook
+            </a> |
+            <a href="https://twitter.com/DEgbuluese?t=ZBlQjYpYZn7XuRRyocQigg&s=09" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <i class="fab fa-twitter"></i> Twitter
+            </a> |
+            <a href="https://www.linkedin.com/in/daniel-egbuluese-5b0a3b23b/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a> |
+            <a href="https://github.com/danniwide1234" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <i class="fab fa-github"></i> GitHub
+            </a>
         </div>
     </footer>
 

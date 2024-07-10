@@ -1,7 +1,12 @@
-// scripts.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Toggle the navigation menu on smaller screens
+    toggleNavMenu();
+    togglePasswordVisibility();
+    validateForms();
+    lazyLoadImages();
+});
+
+// Toggle the navigation menu on smaller screens
+function toggleNavMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('header nav ul');
     
@@ -10,8 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('open');
         });
     }
+}
 
-    // Password visibility toggle
+// Password visibility toggle
+function togglePasswordVisibility() {
     document.querySelectorAll('.password-toggle').forEach(toggle => {
         toggle.addEventListener('click', () => {
             const target = document.getElementById(toggle.dataset.target);
@@ -21,8 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+}
 
-    // Form validation
+// Form validation
+function validateForms() {
     document.querySelectorAll('form').forEach(form => {
         form.addEventListener('submit', (event) => {
             let valid = true;
@@ -44,8 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+}
 
-    // Image lazy loading
+// Image lazy loading
+function lazyLoadImages() {
     const lazyImages = document.querySelectorAll('img.lazy');
 
     if ('IntersectionObserver' in window) {
@@ -67,5 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
             img.classList.remove('lazy');
         });
     }
-});
-
+}

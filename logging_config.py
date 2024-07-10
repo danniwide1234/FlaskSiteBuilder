@@ -15,4 +15,3 @@ def configure_logging(app):
         app.logger.addHandler(file_handler)
         app.logger.setLevel(logging.INFO)
         app.logger.info('FlaskSiteBuilder startup')
-

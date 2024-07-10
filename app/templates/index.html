@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block title %}Home - FlaskSiteBuilder{% endblock %}
 
 {% block content %}
@@ -10,11 +11,11 @@
 
         {% if current_user.is_authenticated %}
             <p>Hello, {{ current_user.username }}! Welcome back to your dashboard.</p>
-            <a href="{{ url_for('app.dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+            <a href="{{ url_for('dashboard.index') }}" class="btn btn-primary">Go to Dashboard</a>
         {% else %}
-            <p>You are not logged in. Please <a href="{{ url_for('app.login') }}">log in</a> or <a href="{{ url_for('app.register') }}">register</a> to start building your site.</p>
-            <a href="{{ url_for('app.register') }}" class="btn btn-primary">Register Now</a>
-            <a href="{{ url_for('app.login') }}" class="btn btn-secondary">Login</a>
+            <p>You are not logged in. Please <a href="{{ url_for('login.index') }}">log in</a> or <a href="{{ url_for('register.index') }}">register</a> to start building your site.</p>
+            <a href="{{ url_for('register.index') }}" class="btn btn-primary">Register Now</a>
+            <a href="{{ url_for('login.index') }}" class="btn btn-secondary">Login</a>
         {% endif %}
     </div>
 </section>
@@ -26,17 +27,17 @@
             <div class="feature-item">
                 <img src="{{ url_for('static', filename='images/feature1.jpg') }}" alt="Seamless user authentication and registration">
                 <h3>Seamless Authentication</h3>
-                <p>Effortlessly manage user authentication and registration with built-in support for secure logins.</p>
+                <p>The FlaskSiteBuilder project includes a robust user authentication system that ensures secure access to your application. This feature provides user registration, login, logout, and password reset functionalities. By leveraging Flask extensions like Flask-Login, Flask-WTF, and Flask-Bcrypt, the authentication system ensures that user credentials are handled securely, including hashing passwords before storing them in the database. The authentication system also includes email verification for new users, enhancing the security and trustworthiness of your application.</p>
             </div>
             <div class="feature-item">
                 <img src="{{ url_for('static', filename='images/feature2.jpg') }}" alt="Easy-to-use dashboard">
                 <h3>User-friendly Dashboard</h3>
-                <p>Utilize an intuitive dashboard for managing your site and accessing essential tools.</p>
+                <p>One of the standout features of FlaskSiteBuilder is its modular code structure, which promotes maintainability and scalability. The project is organized into distinct modules for different components, such as authentication, main routes, static files, templates, and utilities. This separation of concerns makes it easier to manage and expand the application as new features are added. Developers can work on individual modules without interfering with the rest of the codebase, leading to more efficient development and debugging processes. It Utilize an intuitive dashboard for managing your site and accessing essential tools.</p>
             </div>
             <div class="feature-item">
                 <img src="{{ url_for('static', filename='images/feature3.jpg') }}" alt="Customizable templates and themes">
                 <h3>Customizable Templates</h3>
-                <p>Create a unique look and feel for your site with customizable templates and themes.</p>
+                <p>FlaskSiteBuilder is designed with a mobile-first approach, ensuring that your application looks and functions beautifully on any device. The responsive design feature adapts the layout to various screen sizes, from desktops to smartphones. Utilizing modern CSS techniques and frameworks like Bootstrap, the project provides a consistent and user-friendly experience across different devices. This feature not only enhances the usability of the application but also improves its accessibility, making it available to a broader audience. Create a unique look and feel for your site with customizable templates and themes.</p>
             </div>
         </div>
     </div>
@@ -47,7 +48,7 @@
         <h2>Get Started with FlaskSiteBuilder Today</h2>
         <p>Join a community of developers and start building your Flask projects effortlessly.</p>
         {% if not current_user.is_authenticated %}
-            <a href="{{ url_for('app.register') }}" class="btn btn-primary">Sign Up Now</a>
+            <a href="{{ url_for('register.index') }}" class="btn btn-primary">Sign Up Now</a>
         {% endif %}
     </div>
 </section>

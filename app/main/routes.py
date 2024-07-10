@@ -1,7 +1,9 @@
 from flask import render_template, Blueprint
+from flask_login import current_user
 
-main_bp = Blueprint('main', __name__)
+bp = Blueprint('main', __name__)
 
-@main_bp.route('/')
+
+@bp.route('/')
 def index():
     return render_template('index.html')

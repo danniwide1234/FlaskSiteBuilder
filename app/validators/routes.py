@@ -1,10 +1,5 @@
-# app/validators/routes.py
-
-from flask import Blueprint
 from wtforms import ValidationError
-from app.models import User  # Adjust this import based on your actual models location
-
-validators_bp = Blueprint('validators', __name__)
+from app.models.user import User
 
 class UniqueUsername:
     def __init__(self, message=None):
@@ -13,7 +8,7 @@ class UniqueUsername:
         self.message = message
 
     def __call__(self, form, field):
-        if User.query.filter_by(username=field.data).first():
+        if User.query.filter_by(user_name=field.data).first():
             raise ValidationError(self.message)
 
 class UniqueEmail:
