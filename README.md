@@ -5,72 +5,73 @@ FlaskSiteBuilder is a web application built using the Flask framework. This proj
 ## Project Structure
 
 
+<pre>
 FlaskSiteBuilder/
 ├── app/
-│ ├── about/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── contact/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── dashboard/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── errors/
-│ │ ├── init.py
-│ │ ├── routes.py
-│ │ └── handlers.py
-│ ├── forms/
-│ │ ├── init.py
-│ │ ├── routes.py
-│ │ └── forms.py
-│ ├── login/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── main/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── models/
-│ │ ├── init.py
-│ │ └── user.py
-│ ├── register/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── reset_password/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── reset_request/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── validators/
-│ │ ├── init.py
-│ │ └── routes.py
-│ ├── static/
-│ │ ├── css/
-│ │ ├── fonts/
-│ │ ├── images/
-│ │ └── js/
-│ ├── templates/
-│ │ ├── base.html
-│ │ ├── index.html
-│ │ ├── about/
-│ │ │ └── index.html
-│ │ ├── contact/
-│ │ │ └── index.html
-│ │ ├── dashboard/
-│ │ │ └── index.html
-│ │ ├── forms/
-│ │ │ └── index.html
-│ │ ├── login/
-│ │ │ └── index.html
-│ │ ├── register/
-│ │ │ └── index.html
-│ │ ├── reset_password/
-│ │ │ └── index.html
-│ │ ├── reset_request/
-│ │ │ └── index.html
-│ │ └── validators/
-│ │ └── index.html
+│   ├── about/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── contact/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── dashboard/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── errors/
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── handlers.py
+│   ├── forms/
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── forms.py
+│   ├── login/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── main/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   └── user.py
+│   ├── register/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── reset_password/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── reset_request/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── validators/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── static/
+│   │   ├── css/
+│   │   ├── fonts/
+│   │   ├── images/
+│   │   └── js/
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── index.html
+│   │   ├── about/
+│   │   │   └── index.html
+│   │   ├── contact/
+│   │   │   └── index.html
+│   │   ├── dashboard/
+│   │   │   └── index.html
+│   │   ├── forms/
+│   │   │   └── index.html
+│   │   ├── login/
+│   │   │   └── index.html
+│   │   ├── register/
+│   │   │   └── index.html
+│   │   ├── reset_password/
+│   │   │   └── index.html
+│   │   ├── reset_request/
+│   │   │   └── index.html
+│   │   └── validators/
+│   │       └── index.html
 ├── config.py
 ├── extensions.py
 ├── logging_config.py
@@ -78,24 +79,25 @@ FlaskSiteBuilder/
 ├── .env
 ├── .flaskenv
 ├── instance/
-│ └── app.db
+│   └── app.db
 ├── migrations/
-│ └── versions/
-│ ├── alembic.ini
-│ ├── env.py
-│ ├── README
-│ └── script.py.mako
+│   └── versions/
+│       ├── alembic.ini
+│       ├── env.py
+│       ├── README
+│       └── script.py.mako
 ├── my_env/
-│ ├── include/
-│ ├── lib/
-│ ├── script/
-│ └── pyeveng.cfg
+│   ├── include/
+│   ├── lib/
+│   ├── script/
+│   └── pyeveng.cfg
 ├── test/
-│ ├── conftest.py
-│ ├── test_forms.py
-│ └── test_models.py
+│   ├── conftest.py
+│   ├── test_forms.py
+│   └── test_models.py
 ├── README.md
 └── LICENSE
+</pre>
 
 
 
