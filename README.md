@@ -177,6 +177,9 @@ Run the tests using pytest:
 pytest
 ```
 
+## Author
+This project was created by Daniel Egbuluese.
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
@@ -185,6 +188,8 @@ Contributions are welcome! Please open an issue or submit a pull request.
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.
 
+## Contact
+If you have any questions, feel free to contact me at danniwide.1981@gmail.com or fidelismicheal12@gmail.com.
 
 
 
