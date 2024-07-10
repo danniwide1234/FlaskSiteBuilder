@@ -1,15 +1,9 @@
-Here's the updated `README.md` with the necessary packages listed instead of referencing a `requirements.txt` file:
-
-### README.md
-
-```markdown
 # FlaskSiteBuilder
 
 FlaskSiteBuilder is a web application built using the Flask framework. This project serves as a template for building robust web applications with user authentication, a dashboard, and various other features.
 
 ## Project Structure
 
-```
 FlaskSiteBuilder/
 ├── app/
 │   ├── about/
@@ -27,7 +21,7 @@ FlaskSiteBuilder/
 │   │   └── handlers.py
 │   ├── forms/
 │   │   ├── __init__.py
-│   │   ├── __routes__.py
+│   │   ├── routes.py
 │   │   └── forms.py
 │   ├── login/
 │   │   ├── __init__.py
@@ -74,7 +68,7 @@ FlaskSiteBuilder/
 │   │   │   └── index.html
 │   │   ├── reset_request/
 │   │   │   └── index.html
-│   │   ├── validators/
+│   │   └── validators/
 │   │       └── index.html
 ├── config.py
 ├── extensions.py
@@ -99,9 +93,9 @@ FlaskSiteBuilder/
 │   ├── conftest.py
 │   ├── test_forms.py
 │   └── test_models.py
-└── README.md
+├── README.md
 └── LICENSE
-```
+
 
 ## Features
 
@@ -125,7 +119,7 @@ FlaskSiteBuilder/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/danniwide1234/FlaskSiteBuilder.git
+git clone https://github.com/https://github.com/danniwide1234/FlaskSiteBuilder
 cd FlaskSiteBuilder
 ```
 
@@ -186,4 +180,7 @@ Contributions are welcome! Please open an issue or submit a pull request.
 ## License
 
 This project is licensed under the MIT License - see the `LICENSE` file for details.
+
+
+
 
