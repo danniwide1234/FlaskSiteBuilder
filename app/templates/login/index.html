@@ -31,6 +31,11 @@
                 {% endif %}
             </div>
 
+            <div class="form-group">
+                {{ form.remember_me(class="form-check-input") }}  <!-- Ensure remember_me is rendered correctly -->
+                {{ form.remember_me.label(class="form-check-label") }}
+            </div>
+
             <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
 

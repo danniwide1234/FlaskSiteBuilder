@@ -17,7 +17,7 @@
                 <li><a href="{{ url_for('contact.index') }}" class="{% if request.endpoint == 'contact.index' %}active{% endif %}">Contact</a></li>
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('dashboard.index') }}" class="{% if request.endpoint == 'dashboard.index' %}active{% endif %}">Dashboard</a></li>
-                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    <li><a href="{{ url_for('login.logout') }}">Logout</a></li>
                 {% else %}
                     <li><a href="{{ url_for('login.index') }}" class="{% if request.endpoint == 'login.index' %}active{% endif %}">Login</a></li>
                     <li><a href="{{ url_for('register.index') }}" class="{% if request.endpoint == 'register.index' %}active{% endif %}">Register</a></li>

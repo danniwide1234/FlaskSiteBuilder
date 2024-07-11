@@ -1,12 +1,12 @@
 from flask import Flask
-from config import Config
+from config import config
 from extensions import db, login_manager, migrate, csrf
 from logging_config import configure_logging
 from datetime import datetime
 
-def create_app(config_class=Config):
+def create_app(config_name='default'):
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(config[config_name])
 
     # Initialize extensions
     db.init_app(app)
@@ -30,7 +30,7 @@ def create_app(config_class=Config):
     app.register_blueprint(main_bp)
 
     from app.login.routes import bp as login_bp
-    app.register_blueprint(login_bp, url_prefix='/login')
+    app.register_blueprint(login_bp, url_prefix='/login')  # Adjusted url_prefix to '/login'
 
     from app.register.routes import bp as register_bp
     app.register_blueprint(register_bp, url_prefix='/register')

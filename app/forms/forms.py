@@ -1,7 +1,5 @@
-# app/forms/forms.py
-
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError
 from app.models.user import User  # Correct import path
 
@@ -29,12 +27,12 @@ class UniqueEmail:
 # Form Classes
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), UniqueUserName()])
+    first_name = StringField('First Name', validators=[DataRequired()])
+    last_name = StringField('Last Name', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email(), UniqueEmail()])
     password = PasswordField('Password', validators=[DataRequired(), EqualTo('confirm_password', message='Passwords must match')])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Register')
-
-
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -48,6 +46,7 @@ class ResetPasswordForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember Me')  # Add this line
     submit = SubmitField('Login')
 
 class ContactForm(FlaskForm):

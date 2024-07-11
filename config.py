@@ -6,7 +6,13 @@ class Config:
         'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'instance/app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True  # Ensure this is True for development
-    WTF_CSRF_ENABLED = True 
+    WTF_CSRF_ENABLED = True
 
 class ProductionConfig(Config):
     DEBUG = False  # Ensure this is False for production
+
+config = {
+    'development': Config,
+    'production': ProductionConfig,
+    'default': Config
+}

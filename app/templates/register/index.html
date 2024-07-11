@@ -24,6 +24,22 @@
             </div>
 
             <div class="form-group">
+                {{ form.first_name.label(class="form-label") }}
+                {{ form.first_name(class="form-control", placeholder="Enter your first name") }}
+                {% for error in form.first_name.errors %}
+                    <div class="form-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.last_name.label(class="form-label") }}
+                {{ form.last_name(class="form-control", placeholder="Enter your last name") }}
+                {% for error in form.last_name.errors %}
+                    <div class="form-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
                 {{ form.email.label(class="form-label") }}
                 {{ form.email(class="form-control", placeholder="Enter your email address") }}
                 {% for error in form.email.errors %}

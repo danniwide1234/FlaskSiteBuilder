@@ -5,7 +5,7 @@
 {% block content %}
 <section class="dashboard">
     <div class="container">
-        <h1>Welcome to Your Dashboard, {{ current_user.username }}!</h1>
+        <h1>Welcome to Your Dashboard, {{ current_user.user_name }}!</h1>
         <p>Manage your account, view your progress, and access exclusive features here.</p>
 
         <img src="{{ url_for('static', filename='images/feature1.jpg') }}" alt="Dashboard Feature" class="dashboard-image">
@@ -15,7 +15,7 @@
             <div class="section">
                 <h2>Account Information</h2>
                 <ul>
-                    <li><strong>Username:</strong> {{ current_user.username }}</li>
+                    <li><strong>Username:</strong> {{ current_user.user_name }}</li>
                     <li><strong>Email:</strong> {{ current_user.email }}</li>
                     <li><strong>Member Since:</strong> {{ current_user.member_since.strftime('%B %d, %Y') }}</li>
                 </ul>
@@ -25,9 +25,9 @@
             <div class="section">
                 <h2>Quick Actions</h2>
                 <ul class="actions">
-                    <!-- <li><a href="{{ url_for('main.edit_profile') }}" class="btn">Edit Profile</a></li> -->
+                    <li><a href="{{ url_for('main.edit_profile') }}" class="btn">Edit Profile</a></li>
                     <li><a href="{{ url_for('reset_password.index') }}" class="btn">Change Password</a></li>
-                    <li><a href="{{ url_for('logout.index') }}" class="btn">Logout</a></li>
+                    <li><a href="{{ url_for('login.logout') }}" class="btn">Logout</a></li> <!-- Updated to 'login.logout' -->
                 </ul>
             </div>
 
@@ -40,4 +40,3 @@
     </div>
 </section>
 {% endblock %}
-

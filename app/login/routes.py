@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for, flash
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 from app import db
 from app.models.user import User
 from app.forms.forms import LoginForm
@@ -17,8 +17,15 @@ def index():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid email or password', 'danger')
             return redirect(url_for('login.index'))
-        login_user(user, remember=form.remember_me.data)
+        login_user(user, remember=form.remember_me.data)  # Ensure remember_me is passed correctly
         flash('Logged in successfully', 'success')
         return redirect(url_for('dashboard.index'))
 
     return render_template('login/index.html', form=form)
+
+@bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have been logged out.', 'info')
+    return redirect(url_for('login.index'))
