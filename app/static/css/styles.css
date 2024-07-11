@@ -22,6 +22,7 @@ header nav ul {
     display: flex;
     justify-content: center;
     background-color: #333;
+    flex-wrap: wrap; /* Allow navigation items to wrap on small screens */
 }
 
 header nav ul li {
@@ -201,4 +202,33 @@ footer .social-links a:hover {
 
 footer .social-links i {
     margin-right: 5px;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li a {
+        padding: 10px;
+    }
+
+    .hero .hero-image {
+        width: 100%;
+    }
+
+    .features .feature-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .auth-section {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .auth-section .submit-btn {
+        font-size: 1em;
+    }
 }
