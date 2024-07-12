@@ -4,8 +4,8 @@ FlaskSiteBuilder is a web application built using the Flask framework. This proj
 
 ## Project Structure
 
-
 <pre>
+
 FlaskSiteBuilder/
 ├── app/
 │   ├── about/
@@ -97,19 +97,21 @@ FlaskSiteBuilder/
 │   └── test_models.py
 ├── README.md
 └── LICENSE
-</pre>
+├── scripts/ │
+         └── update_member_since.py
 
+</pre>
 
 
 ## Features
 
-- User Authentication (Login, Register, Password Reset)
-- User Dashboard
-- About and Contact Pages
-- Error Handling
-- Forms with Validation
-- Static File Management
-- Logging Configuration
+- User Authentication: Includes functionalities for user registration, login, logout, and password reset.
+- User Dashboard: Provides a customizable dashboard for each authenticated user.
+- About and Contact Pages: Static pages with basic information about the application and contact details.
+- Error Handling: Centralized error handling for better user experience.
+- Forms with Validation: Implements forms with server-side validation using Flask-WTF.
+- Static File Management: Organized handling of static assets like CSS, fonts, images, and JavaScript.
+- Logging Configuration: Configured logging to track application events.
 
 ## Getting Started
 
@@ -119,77 +121,54 @@ FlaskSiteBuilder/
 - Virtual Environment (recommended)
 
 ### Installation
-
 1. Clone the repository:
 
-```bash
-git clone https://github.com/https://github.com/danniwide1234/FlaskSiteBuilder
-cd FlaskSiteBuilder
-```
+   ```bash
+   git clone https://github.com/https://github.com/danniwide1234/FlaskSiteBuilder
+   cd FlaskSiteBuilder
+ 
 
 2. Create and activate a virtual environment:
-
-```bash
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-```
 
 3. Install the required packages:
-
-```bash
 pip install Flask SQLAlchemy Flask-Migrate Flask-Login Flask-WTF Flask-Mail
-```
 
 4. Set up the environment variables:
-
-Create a `.env` file in the root directory with the following content:
-
-```plaintext
+Create a .env file in the root directory with the following content:
 FLASK_ENV=development
 DEBUG=True
 SECRET_KEY=99490c5b2922cd2dca58ba2efb8ea223
 DATABASE_URI=sqlite:///instance/app.db
-```
 
-5. Initialize the database:
-
-```bash
+5. Initialize the database
 flask db upgrade
-```
 
 6. Run the application:
-
-```bash
 flask run
-```
 
-## Usage
 
-- Access the application at `http://127.0.0.1:5000/`
-- Register a new user, login, and explore the dashboard.
-- Check out the about and contact pages.
+### Usage
+Access the application at http://127.0.0.1:5000/
+Register a new user, login, and explore the dashboard.
+Check out the about and contact pages.
 
-## Testing
-
+### Testing
 Run the tests using pytest:
-
-```bash
 pytest
-```
 
-## Author
-This project was created by Daniel Egbuluese.
+### Author
+This project was created by Daniel Egbuluese, a chemical engineering graduate and tech enthusiast with a background in ISO consultancy. Daniel is currently pursuing a career in software engineering to develop tools that streamline ISO certification processes and solve real-world challenges.
 
-## Contributing
-
+### Contributing
 Contributions are welcome! Please open an issue or submit a pull request.
 
-## License
+### License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This project is licensed under the MIT License - see the `LICENSE` file for details.
-
-## Contact
-If you have any questions, feel free to contact me at danniwide.1981@gmail.com or fidelismicheal12@gmail.com.
+### Contact
+If you have any questions or feedback, feel free to contact Daniel at danniwide.1981@gmail.com or fidelismicheal12@gmail.com.
 
 
 
