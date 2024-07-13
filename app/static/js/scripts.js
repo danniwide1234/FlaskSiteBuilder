@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     togglePasswordVisibility();
     validateForms();
     lazyLoadImages();
+    setupEditPageForm(); // New function to handle edit page form
 });
 
 // Toggle the navigation menu on smaller screens
@@ -77,5 +78,42 @@ function lazyLoadImages() {
             img.src = img.dataset.src;
             img.classList.remove('lazy');
         });
+    }
+}
+
+// Setup edit page form interaction
+function setupEditPageForm() {
+    const editLinks = document.querySelectorAll('.edit-page-link');
+
+    editLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const pageId = link.getAttribute('data-page-id');
+            const pageTitle = link.getAttribute('data-page-title');
+            const pageContent = link.getAttribute('data-page-content');
+
+            const editForm = document.getElementById('editForm');
+            if (editForm) {
+                const editPageTitle = document.getElementById('edit_page_title');
+                const editPageContent = document.getElementById('edit_page_content');
+
+                if (editPageTitle && editPageContent) {
+                    editPageTitle.value = pageTitle;
+                    editPageContent.value = pageContent;
+
+                    // Assuming the form action needs to be dynamically set (replace with your logic)
+                    editForm.action = `/edit/${pageId}`;
+
+                    // Show the edit form
+                    document.getElementById('editPageForm').style.display = 'block';
+                }
+            }
+        });
+    });
+
+    // Function to cancel editing
+    function cancelEdit() {
+        document.getElementById('editPageForm').style.display = 'none';
     }
 }

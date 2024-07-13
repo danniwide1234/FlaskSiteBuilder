@@ -46,7 +46,7 @@ class ResetPasswordForm(FlaskForm):
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')  # Add this line
+    remember_me = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
 class ContactForm(FlaskForm):
@@ -54,3 +54,18 @@ class ContactForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     message = TextAreaField('Message', validators=[DataRequired()])
     submit = SubmitField('Send')
+
+class CreatePageForm(FlaskForm):
+    page_title = StringField('Page Title', validators=[DataRequired()])
+    page_content = TextAreaField('Page Content', validators=[DataRequired()])
+    submit = SubmitField('Create Page')
+
+class CreatePageForm(FlaskForm):
+    page_title = StringField('Page Title', validators=[DataRequired()])
+    page_content = TextAreaField('Page Content', validators=[DataRequired()])
+    submit = SubmitField('Create Page')
+
+class EditPageForm(FlaskForm):
+    page_title = StringField('Page Title', validators=[DataRequired()])
+    page_content = TextAreaField('Page Content', validators=[DataRequired()])
+    submit = SubmitField('Save Changes')

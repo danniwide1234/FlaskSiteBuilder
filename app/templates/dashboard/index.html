@@ -27,7 +27,16 @@
                 <ul class="actions">
                     <li><a href="{{ url_for('main.edit_profile') }}" class="btn">Edit Profile</a></li>
                     <li><a href="{{ url_for('reset_password.index') }}" class="btn">Change Password</a></li>
-                    <li><a href="{{ url_for('login.logout') }}" class="btn">Logout</a></li> <!-- Updated to 'login.logout' -->
+                    <li><a href="{{ url_for('login.logout') }}" class="btn">Logout</a></li>
+                </ul>
+            </div>
+
+            <!-- Page Management Section -->
+            <div class="section">
+                <h2>Page Management</h2>
+                <ul class="actions">
+                    <li><a href="{{ url_for('create_page.index') }}" class="btn">Create New Page</a></li>
+                    <li><a href="{{ url_for('edit_page.index') }}" class="btn">Edit Existing Page</a></li>
                 </ul>
             </div>
 

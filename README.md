@@ -31,9 +31,16 @@ FlaskSiteBuilder/
 │   ├── main/
 │   │   ├── __init__.py
 │   │   └── routes.py
+│   ├──create_page/
+│   │   ├── __init__.py
+│   │   └── routes.py
+│   ├── edit_page/
+│   │   ├── __init__.py
+│   │   └── routes.py
 │   ├── models/
 │   │   ├── __init__.py
 │   │   └── user.py
+        └── page.py
 │   ├── register/
 │   │   ├── __init__.py
 │   │   └── routes.py
@@ -63,6 +70,10 @@ FlaskSiteBuilder/
 │   │   ├── forms/
 │   │   │   └── index.html
 │   │   ├── login/
+│   │   │   └── index.html
+│   │   ├── create_page/
+│   │   │   └── index.html
+│   │   ├── edit_page/
 │   │   │   └── index.html
 │   │   ├── register/
 │   │   │   └── index.html

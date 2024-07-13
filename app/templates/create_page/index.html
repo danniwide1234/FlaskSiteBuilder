@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Create Page - FlaskSiteBuilder{% endblock %}
+
+{% block content %}
+<section class="create-page">
+    <div class="container">
+        <h1>Create a New Page</h1>
+        <p>Use the form below to create a new page.</p>
+
+        <!-- Form for creating a new page -->
+        <form method="POST" action="{{ url_for('create_page.index') }}">
+            {{ form.hidden_tag() }}  <!-- Include CSRF token -->
+            <div class="form-group">
+                <label for="page_title">Page Title</label>
+                {{ form.page_title(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="page_content">Page Content</label>
+                {{ form.page_content(class="form-control") }}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+
+        <hr>
+
+        <!-- List of Created Pages -->
+        <h2>List of Created Pages</h2>
+        <ul>
+            {% for page in pages %}
+            <li>{{ page.title }} - {{ page.content }}
+                <a href="#" data-page-id="{{ page.id }}" data-page-title="{{ page.title }}" data-page-content="{{ page.content }}" class="edit-page-link">Edit</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <hr>
+
+        <!-- Edit Page Form (Hidden by default) -->
+        <div id="editPageForm" style="display: none;">
+            <h2 id="editPageTitle">Edit Page</h2>
+            <form method="POST" action="" id="editForm">
+                {{ edit_form.hidden_tag() }}  <!-- Include CSRF token -->
+                <div class="form-group">
+                    <label for="edit_page_title">Page Title</label>
+                    {{ edit_form.page_title(class="form-control", id="edit_page_title") }}
+                </div>
+                <div class="form-group">
+                    <label for="edit_page_content">Page Content</label>
+                    {{ edit_form.page_content(class="form-control", id="edit_page_content") }}
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Cancel</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

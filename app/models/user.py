@@ -1,7 +1,7 @@
 from datetime import datetime
-from app import db
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from werkzeug.security import generate_password_hash, check_password_hash
+from extensions import db
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -10,8 +10,10 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))  # Store password hash, not password
-    member_since = db.Column(db.DateTime, default=datetime.utcnow)  # Add this line
+    password_hash = db.Column(db.String(128))
+    member_since = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    pages = db.relationship('Page', backref='author', lazy=True)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

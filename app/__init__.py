@@ -17,6 +17,7 @@ def create_app(config_name='default'):
     with app.app_context():
         # Import models to ensure they are registered
         from app.models.user import User  # Ensure User model is imported
+        from app.models.page import Page  # Import Page model for edit_page blueprint
         # Create database tables for our data models
         db.create_all()
 
@@ -30,7 +31,7 @@ def create_app(config_name='default'):
     app.register_blueprint(main_bp)
 
     from app.login.routes import bp as login_bp
-    app.register_blueprint(login_bp, url_prefix='/login')  # Adjusted url_prefix to '/login'
+    app.register_blueprint(login_bp, url_prefix='/login')
 
     from app.register.routes import bp as register_bp
     app.register_blueprint(register_bp, url_prefix='/register')
@@ -52,6 +53,12 @@ def create_app(config_name='default'):
 
     from app.errors.handlers import bp as errors_bp
     app.register_blueprint(errors_bp)
+
+    from app.create_page.routes import bp as create_page_bp
+    app.register_blueprint(create_page_bp, url_prefix='/create_page')
+
+    from app.edit_page.routes import bp as edit_page_bp
+    app.register_blueprint(edit_page_bp, url_prefix='/edit_page')
 
     # Additional setup
     configure_logging(app)
